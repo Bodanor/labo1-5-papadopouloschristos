@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using SettingsForm;
 namespace Labo2
 {
     /// <summary>
@@ -20,9 +20,27 @@ namespace Labo2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly SettingsForm.MainWindow SettingsForm = new();
         public MainWindow()
         {
             InitializeComponent();
+            SettingsForm.SettingCompleted += SettingsForm_SettingsCompleted;
+        }
+
+        private void SettingsForm_SettingsCompleted(object sender, OptionEventArgs e)
+        {
+            if (sender is SettingsForm.MainWindow)
+            {
+                Background = new SolidColorBrush(e.Couleur);
+                FontSize = e.Taille;
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsForm.Show();
+            SettingsForm.Focus();
+            SettingsForm.Activate();
         }
     }
 }

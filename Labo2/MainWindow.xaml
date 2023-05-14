@@ -69,7 +69,7 @@
             <MenuItem Header="Fichier">
                 <MenuItem x:Name="BtnQuitter" Header="Quitter"/>
             </MenuItem>
-            <MenuItem Header="Option">
+            <MenuItem Header="Option" Click="MenuItem_Click">
                 <MenuItem x:Name="BtnParametres" Header="Paramètres"/>
             </MenuItem>
         </Menu>
